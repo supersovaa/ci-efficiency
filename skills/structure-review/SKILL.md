@@ -1,11 +1,11 @@
 ---
 name: test-scope-structure-review
-description: Assess costly or unusually broad test execution and suggest responsibility separation when it could narrow necessary verification.
+description: Review costly or unusually broad test execution and consider whether responsibility separation could reduce necessary verification.
 ---
 
 # Test Scope Structure Review
 
-Use this skill when test execution is costly or unusually broad and a responsibility split might narrow the necessary verification.
+Use this skill when reviewing costly or unusually broad test execution for possible structural improvements.
 
 Identify whether the testing burden arises from necessary integration guarantees or from responsibilities that could be verified independently.
 When separating responsibilities could reduce the necessary test scope, suggest considering a split and explain the expected testing benefit.
