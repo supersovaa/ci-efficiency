@@ -10,7 +10,7 @@ When tests remain costly or broad, consider whether independent responsibilities
 ## Skills and when to use
 
 - `ci-execution-efficiency` — Use when designing, changing, or reviewing CI test execution, affected-test selection, workflow configuration, or runner-environment reuse.
-- `test-scope-structure-review` — Use when test execution is costly or unusually broad and a responsibility split might narrow the necessary verification.
+- `test-scope-structure-review` — Use when reviewing costly or unusually broad test execution for possible structural improvements.
 
 Both skills apply across languages and CI services, independently or together.
 
