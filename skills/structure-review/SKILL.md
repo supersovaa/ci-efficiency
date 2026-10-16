@@ -1,11 +1,11 @@
 ---
 name: test-scope-structure-review
-description: Review expensive or broad tests, or code organization, for opportunities to narrow necessary verification through responsibility separation.
+description: Assess costly or unusually broad test execution and suggest responsibility separation when it could narrow necessary verification.
 ---
 
 # Test Scope Structure Review
 
-Use this skill when reviewing expensive or broad tests, or reviewing code organization for opportunities to reduce the scope of required verification.
+Use this skill when test execution is costly or unusually broad and a responsibility split might narrow the necessary verification.
 
 Identify whether the testing burden arises from necessary integration guarantees or from responsibilities that could be verified independently.
 When separating responsibilities could reduce the necessary test scope, suggest considering a split and explain the expected testing benefit.
