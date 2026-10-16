@@ -14,7 +14,7 @@ Use this skill when designing, changing, or reviewing CI test execution, affecte
 3. Select tests for affected units and relevant dependents, preserving required cross-unit verification. Expand the execution scope when the impact cannot be established reliably.
 4. Consolidate repeated CI work only when equivalent required verification remains. Prefer existing mechanisms and straightforward workflow rules.
 
-Use `requirement-driven-testing` for decisions about which test evidence is required or whether tests can be consolidated or retired; this skill selects when and where to execute that evidence.
+Use `test-evidence-planning` to determine required test evidence and `test-evidence-implementation` to consolidate or retire tests; this skill selects when and where to execute the required evidence.
 
 ## Reuse compatible execution environments
 
