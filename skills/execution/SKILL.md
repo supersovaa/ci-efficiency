@@ -18,9 +18,9 @@ Use `test-evidence-planning` to determine required test evidence and `test-evide
 
 ## Reuse compatible execution environments
 
-Reuse installed toolchains and dependencies on persistent runners; use prepared images or caches for disposable runners when available.
-Update or rebuild when toolchain, dependency, or environment requirements change or compatibility is uncertain. Manage environment updates explicitly rather than installing unchanged dependencies on every run.
-Keep per-run workspaces and mutable state isolated or reset, with reproducible dependencies and safe cache reuse.
+Before introducing or migrating CI, inspect the actual runners' OS, architecture, capacity, concurrency, installed tools and dependencies, and shared build/cache paths. Surface missing setup facts and choices to the user at this stage, before settling the recurring workflow.
+Provision and verify compatible environments during initial setup and when their requirements change. Reuse installed toolchains and dependencies on persistent runners; use prepared images or caches for disposable runners. Keep routine jobs focused on required tests and isolated or reset per-run mutable state.
+When investigating CI slowness, distinguish queue time, environment preparation, builds, and test execution before changing test coverage or adding recurring checks.
 
 ## Hand off structural pressure
 
