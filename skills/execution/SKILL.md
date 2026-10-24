@@ -11,10 +11,14 @@ Use this skill when designing, changing, or reviewing CI test execution, affecte
 
 1. Inspect the existing CI and the required test evidence established by the repository.
 2. Determine affected units and checks from changed files, dependencies, public contracts, shared configuration, and integration paths.
-3. Select tests for affected units and relevant dependents, preserving required cross-unit verification. Expand the execution scope when the impact cannot be established reliably.
+3. Select tests for affected units and relevant dependents, preserving required cross-unit verification. When impact is uncertain, investigate likely dependencies and select bounded checks; a CI configuration change or uncertainty alone does not justify running every check.
 4. Consolidate repeated CI work only when equivalent required verification remains. Prefer existing mechanisms and straightforward workflow rules.
 
 Use `test-evidence-planning` to determine required test evidence and `test-evidence-implementation` to consolidate or retire tests; this skill selects when and where to execute the required evidence.
+
+For single-developer projects, prioritize fast feedback and runner capacity over speculative extra coverage. Reserve full-suite runs for explicit verification requirements or deliberate scheduled/manual execution rather than using them as a fallback.
+
+When reviewing a CI change, inspect the checks and jobs its selection rules would actually run for the proposed change, including unrelated jobs. Treat substantially unnecessary execution that defeats the change's goal or imposes significant recurring cost as a material review finding, even when the checks pass.
 
 ## Reuse compatible execution environments
 
