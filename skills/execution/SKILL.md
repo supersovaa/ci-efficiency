@@ -7,30 +7,56 @@ description: Design, change, or review CI test execution, affected-test selectio
 
 Use this skill when designing, changing, or reviewing CI test execution, affected-test selection, workflow configuration, or runner-environment reuse.
 
-## Select sufficient execution
+Treat required verification and a simple execution structure as joint requirements. Use settled test evidence and existing verification commands as inputs.
 
-1. Inspect the existing CI and the required test evidence established by the repository.
-2. Determine affected units and checks from changed files, dependencies, public contracts, shared configuration, and integration paths.
-3. Select tests for affected units and relevant dependents, preserving required cross-unit verification. When impact is uncertain, investigate likely dependencies and select bounded checks; a CI configuration change or uncertainty alone does not justify running every check.
-4. Consolidate repeated CI work only when equivalent required verification remains. Prefer existing mechanisms and straightforward workflow rules.
+## Establish execution premises first
 
-Use `test-evidence-planning` to determine required test evidence and `test-evidence-implementation` to consolidate or retire tests; this skill selects when and where to execute the required evidence.
+At the start of CI design, changes, or review, read the repository's CI environment premises file before choosing jobs or setup steps.
+Use an existing file that owns these premises; otherwise create `ci/environment.md`. Consolidate the premises there and link the file from the repository's CI guidance.
 
-For single-developer projects, prioritize fast feedback and runner capacity over speculative extra coverage. Reserve full-suite runs for explicit verification requirements or deliberate scheduled/manual execution rather than using them as a fallback.
+Record only stable facts that affect execution:
 
-When reviewing a CI change, inspect the checks and jobs its selection rules would actually run for the proposed change, including unrelated jobs. Treat substantially unnecessary execution that defeats the change's goal or imposes significant recurring cost as a material review finding, even when the checks pass.
+- available runners or images, their selection identifiers, OS, architecture, capacity, and concurrency;
+- prepared tools and dependencies, referencing authoritative version declarations and dependency locks;
+- reusable build/cache locations, isolation constraints, and the environment preparation/update method and its triggers.
 
-## Reuse compatible execution environments
+Establish the initial contents from repository, runner, or provider records, resolving material gaps with the user as needed. Distinguish confirmed capabilities from pending preparation and confirm readiness before execution relies on it.
+On later work, reuse applicable recorded facts and recheck premises affected by the change or conflicting evidence. Update the record as part of changes to the environment or its authoritative declarations.
+Keep this file focused on external execution premises; express job and test-selection behavior in executable configuration.
 
-When setting up or migrating self-hosted CI, inspect the actual runners' OS, architecture, capacity, concurrency, installed tools and dependencies, and shared build/cache paths. Resolve missing facts or choices that materially affect setup, placement, or performance with the user at this stage.
-For provider-hosted runners, use the provider's documented images and preinstalled tools as the starting point; prepare project-specific dependencies as needed.
-Reuse installed toolchains and dependencies on persistent runners; use prepared images or caches for disposable runners when available.
-Update or rebuild when toolchain, dependency, or environment requirements change or compatibility is uncertain. Manage environment updates explicitly rather than installing unchanged dependencies on every run.
-Keep per-run workspaces and mutable state isolated or reset, with reproducible dependencies and safe cache reuse.
-When investigating CI slowness, distinguish queue time, environment preparation, builds, and test execution before changing test coverage or adding recurring checks.
+Separate environment preparation and updates from normal verification runs. Prefer preparing stable tools and dependencies once per compatible environment version and making CI consume that environment.
+Reuse installed tools and dependencies on persistent runners; use suitable prepared images or caches on disposable runners. Start provider-hosted environments from the provider's documented image capabilities.
+Use existing version declarations and dependency locks to identify compatibility and the conditions for rebuilding or updating the environment. Assign updates explicitly to environment maintenance; keep per-run preparation limited to work required by changed inputs or the actual runner lifecycle.
+Keep per-run workspaces and mutable state isolated or reset, with reproducible dependencies and cache/build reuse compatible with the inputs and concurrent access.
 
-## Hand off structural pressure
+## Select required execution
 
-When necessary test execution remains costly or broad because of coupling, use `test-scope-structure-review` to consider whether responsibility separation could help.
+Determine affected checks from changed responsibilities, dependencies, public contracts, shared configuration, and integration paths. Use authoritative build and test metadata; keep any additional stable selection mapping in one place.
+Select checks for affected units and relevant dependents, preserving required cross-unit verification. Combine selections for mixed changes. Investigate uncertain dependencies and choose a bounded set covering the affected guarantees.
+Reserve full-suite runs for explicit verification requirements or deliberate scheduled/manual execution. For single-developer projects, prioritize fast feedback and runner capacity within the required verification boundary.
 
-This skill owns CI execution selection, workflow simplicity, and compatible environment reuse. Structural design and test-evidence definition remain with their respective owners.
+Preserve the required selection while simplifying its dispatch. Use common selection rules and existing test commands to achieve both precise execution and simple configuration.
+
+## Keep the execution structure direct
+
+Choose job boundaries for required environments, isolation, sequencing, or useful parallelism within actual runner capacity.
+When targets share an execution contract, pass the selected targets as inputs to common execution. Keep selection decisions at their owning boundary and make downstream jobs consume the result directly.
+Compare proposed jobs, flags, branches, helpers, and reuse mechanisms with direct use of existing commands. Choose the simplest whole-path structure that preserves the required selection, environment compatibility, and result propagation.
+
+Evaluate workflow configuration, called scripts/actions, environment preparation, state coordination, and supporting checks together. Consolidate repeated work where equivalent required verification remains. Prefer existing mechanisms and straightforward workflow rules.
+Keep triggers, job responsibilities, dependencies, environment choice, and verification commands directly understandable from the workflow. Let the executable structure express the execution behavior.
+
+## Verify actual selection and recurring work
+
+Use focused checks and available run evidence to trace representative affected, unrelated, and mixed changes through selection, job/step conditions, preparation, and results.
+Confirm that execution matches the recorded environment premises, required checks execute, unrelated checks are excluded, compatible environments are reused, and selection, preparation, or verification failures remain visible in the overall result.
+Distinguish observed execution from predictions and state any remaining validation needs.
+
+When investigating slowness, distinguish queue time, environment preparation, builds, and test execution before choosing a change.
+Treat substantially unnecessary recurring preparation or unrelated execution, and complexity that materially defeats the change's goal, as material review findings even when checks pass.
+
+## Responsibility boundary
+
+This skill owns CI execution selection, workflow simplicity, and compatible environment reuse.
+Use `test-evidence-planning` to determine required test evidence and `test-evidence-implementation` to consolidate or retire tests.
+When necessary execution remains costly or broad because of product coupling, use `test-scope-structure-review` to consider responsibility separation; product structure design belongs to its owning workflow.
