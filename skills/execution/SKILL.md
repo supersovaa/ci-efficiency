@@ -12,7 +12,8 @@ Treat required verification and a simple execution structure as joint requiremen
 ## Establish execution premises first
 
 At the start of CI design, changes, or review, read the repository's CI environment premises file before choosing jobs or setup steps.
-Use an existing file that owns these premises; otherwise create `ci/environment.md`. Consolidate the premises there and link the file from the repository's CI guidance.
+Use an existing file that owns these premises. During CI design or changes, create `ci/environment.md` when needed, consolidate the premises there, and link the file from the repository's CI guidance.
+During review, assess the available premises and report material gaps through the surrounding review workflow. Apply file changes only within that workflow's authorized scope.
 
 Record only stable facts that affect execution:
 
