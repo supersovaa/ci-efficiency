@@ -4,8 +4,9 @@ Two lightweight skills for keeping CI verification proportional to the change an
 
 ## Core idea
 
-Preserve required test evidence, select the execution affected by a change, and reuse compatible execution environments while keeping CI configuration simple.
-When tests remain costly or broad, consider whether independent responsibilities could be separated; leave the actual structure design to its owner.
+Keep the execution environment premises in one repository file, use them as the starting point for CI work, and separate environment preparation and updates from normal verification runs. Execute the required checks through a directly understandable workflow.
+Precise test selection and simple CI structure are joint requirements. Evaluate recurring work and complexity across the environment, workflow, and supporting execution mechanisms together.
+When necessary execution remains costly or broad because of product coupling, consider whether independent responsibilities could be separated; leave the actual structure design to its owner.
 
 ## Skills and when to use
 
@@ -16,8 +17,8 @@ Both skills apply across languages and CI services, independently or together.
 
 ## Responsibility boundaries
 
-`ci-execution-efficiency` owns CI test selection, workflow simplicity, and compatible environment reuse.
-`test-scope-structure-review` suggests considering responsibility separation when that could reduce necessary test scope; it does not design or implement the split.
+`ci-execution-efficiency` owns CI test selection, workflow simplicity, and compatible environment reuse, including the boundary between environment maintenance and normal verification runs.
+`test-scope-structure-review` suggests considering responsibility separation when that could reduce necessary test scope. Product structure design and implementation belong to the relevant structure-design workflow.
 
 [`requirement-driven-testing`](https://github.com/supersovaa/requirement-driven-testing) owns deciding, establishing, and preserving necessary test evidence.
 Language-specific structure design belongs to its respective owner, such as [`responsibility-driven-crates`](https://github.com/supersovaa/responsibility-driven-crates) for Rust.
