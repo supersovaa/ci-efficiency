@@ -1,6 +1,6 @@
 ---
 name: ci-execution-efficiency
-description: Design, change, or review CI test execution and recurring work, including tests automatically collected by unchanged workflows, affected-test selection, and runner reuse.
+description: Design, change, or review CI test execution, affected-test selection, workflow configuration, runner-environment reuse, and recurring cost from automatically collected tests across languages and CI services.
 ---
 
 # CI Execution Efficiency
@@ -60,6 +60,6 @@ Treat substantially unnecessary recurring preparation or unrelated execution, in
 
 ## Responsibility boundary
 
-This skill owns CI execution selection, workflow simplicity, and compatible environment reuse.
+This skill owns CI execution selection, recurring execution cost, workflow simplicity, and compatible environment reuse.
 Use `test-evidence-planning` to determine required test evidence and `test-evidence-implementation` to consolidate or retire tests.
 When necessary execution remains costly or broad because of product coupling, use `test-scope-structure-review` to consider responsibility separation; product structure design belongs to its owning workflow.
