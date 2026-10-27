@@ -17,7 +17,7 @@ Both skills apply across languages and CI services, independently or together.
 
 ## Responsibility boundaries
 
-`ci-execution-efficiency` owns recurring CI test selection and execution cost, workflow simplicity, and compatible environment reuse, including the boundary between environment maintenance and normal verification runs.
+`ci-execution-efficiency` owns CI test selection, recurring execution cost, workflow simplicity, and compatible environment reuse, including the boundary between environment maintenance and normal verification runs.
 `test-scope-structure-review` suggests considering responsibility separation when that could reduce necessary test scope. Product structure design and implementation belong to the relevant structure-design workflow.
 
 [`requirement-driven-testing`](https://github.com/supersovaa/requirement-driven-testing) owns deciding, establishing, and preserving necessary test evidence.
