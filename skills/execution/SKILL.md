@@ -1,13 +1,13 @@
 ---
 name: ci-execution-efficiency
-description: Design, change, or review CI test execution, affected-test selection, workflow configuration, runner-environment reuse, and recurring cost from automatically collected tests across languages and CI services.
+description: Design, change, or review CI execution, including affected-test selection, workflow configuration, runner-environment reuse, recurring test cost, and CI dependencies imposed on repository verification.
 ---
 
 # CI Execution Efficiency
 
-Use this skill when designing, changing, or reviewing CI execution, including tests added to suites that existing workflows automatically collect, affected-test selection, workflow configuration, or runner-environment reuse.
+Use this skill when designing, changing, or reviewing CI execution, including repository verification coupled to CI-specific configuration, tests automatically collected by existing workflows, affected-test selection, workflow configuration, or runner-environment reuse.
 
-Treat required verification and a simple execution structure as joint requirements. Use settled test evidence and existing verification commands as inputs.
+Treat required verification, a simple execution structure, and repository-owned verification interfaces as joint requirements. Use settled test evidence and existing verification commands as inputs.
 
 ## Establish execution premises first
 
@@ -40,6 +40,14 @@ When adding or modifying tests, trace whether existing CI discovery and runner c
 
 Preserve the required selection while simplifying its dispatch. Use common selection rules and existing test commands to achieve both precise execution and simple configuration.
 
+## Keep repository verification independent of CI
+
+Use repository-owned verification commands or standard tooling commands as the interface consumed by CI. Keep those commands invocable outside the CI service through documented inputs and environment prerequisites, including checks requiring a specific OS or hardware.
+
+Keep provider-specific events, job metadata, environment variables, and result publication within CI orchestration. Pass required check selection and environment settings to verification commands as explicit inputs. Let product structure and test definitions follow their owning requirements rather than CI dispatch convenience.
+
+When a CI improvement calls for changing source or test organization, route the design or test-evidence decision to its owning workflow, then adapt CI to the resulting verification interface.
+
 ## Keep the execution structure direct
 
 Choose job boundaries for required environments, isolation, sequencing, or useful parallelism within actual runner capacity.
@@ -52,7 +60,7 @@ Keep triggers, job responsibilities, dependencies, environment choice, and verif
 ## Verify actual selection and recurring work
 
 Use focused checks and available run evidence to trace representative affected, unrelated, and mixed changes, including tests automatically collected by unchanged workflows, through selection, job/step conditions, preparation, and results.
-Confirm that execution matches the recorded environment premises, required checks execute, unrelated checks are excluded, compatible environments are reused, and selection, preparation, or verification failures remain visible in the overall result.
+Confirm that execution matches the recorded environment premises, repository verification commands retain documented independent invocation, required checks execute, unrelated checks are excluded, compatible environments are reused, and selection, preparation, or verification failures remain visible in the overall result.
 Distinguish observed execution from predictions and state any remaining validation needs.
 
 When investigating slowness, distinguish queue time, environment preparation, builds, and test execution before choosing a change.
@@ -60,6 +68,6 @@ Treat substantially unnecessary recurring preparation or unrelated execution, in
 
 ## Responsibility boundary
 
-This skill owns CI execution selection, recurring execution cost, workflow simplicity, and compatible environment reuse.
+This skill owns CI execution selection, recurring execution cost, workflow simplicity, compatible environment reuse, and the boundary between CI orchestration and repository verification.
 Use `test-evidence-planning` to determine required test evidence and `test-evidence-implementation` to consolidate or retire tests.
 When necessary execution remains costly or broad because of product coupling, use `test-scope-structure-review` to consider responsibility separation; product structure design belongs to its owning workflow.
