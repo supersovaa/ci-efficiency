@@ -5,7 +5,7 @@ Two lightweight skills for keeping CI verification proportional to the change an
 ## Core idea
 
 Keep the execution environment premises in one repository file, use them as the starting point for CI work, and separate environment preparation and updates from normal verification runs. Execute the required checks through a directly understandable workflow.
-Make CI consume repository-owned verification commands; keep provider-specific orchestration inside CI and leave product and test structure to their owning responsibilities.
+Make CI consume repository-owned verification commands; keep CI-specific orchestration inside CI and leave product and test structure to their owning responsibilities.
 Precise test selection and simple CI structure are joint requirements. Evaluate recurring work and complexity across the environment, workflow, and supporting execution mechanisms together, including tests collected automatically by unchanged workflows.
 When necessary execution remains costly or broad because of product coupling, consider whether independent responsibilities could be separated; leave the actual structure design to its owner.
 
