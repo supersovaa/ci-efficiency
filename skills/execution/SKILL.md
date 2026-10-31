@@ -44,7 +44,7 @@ Preserve the required selection while simplifying its dispatch. Use common selec
 
 Use repository-owned verification commands or standard tooling commands as the interface consumed by CI. Keep those commands invocable outside the CI service through documented inputs and environment prerequisites, including checks requiring a specific OS or hardware.
 
-Keep provider-specific events, job metadata, environment variables, and result publication within CI orchestration. Pass required check selection and environment settings to verification commands as explicit inputs. Let product structure and test definitions follow their owning requirements rather than CI dispatch convenience.
+Keep CI-specific triggers, selection controls, job metadata, environment variables, runner paths, and result publication within CI orchestration. Pass required check selection and environment settings to verification commands as explicit inputs. Let product structure and test definitions follow their owning requirements rather than CI dispatch convenience.
 
 When a CI improvement calls for changing source or test organization, route the design or test-evidence decision to its owning workflow, then adapt CI to the resulting verification interface.
 
