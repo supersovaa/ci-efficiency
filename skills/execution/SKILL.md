@@ -32,13 +32,14 @@ Keep per-run workspaces and mutable state isolated or reset, with reproducible d
 
 ## Select required execution
 
-Determine affected checks from changed responsibilities, dependencies, public contracts, shared configuration, and integration paths. Use authoritative build and test metadata; keep any additional stable selection mapping in one place.
+Determine affected checks from changed responsibilities, dependencies, public contracts, shared configuration, and integration paths. Derive selection from authoritative build/test dependency metadata and shared rules that apply uniformly to the relevant units.
+Prohibit manually maintained per-file, per-directory, per-component, or per-change-type lookup tables that enumerate corresponding checks, including equivalent lists embedded in scripts or generated from separately maintained mappings. Express necessary exceptions as general rules grounded in explicit contracts or dependency relationships, and revise the owning build/test metadata when the dependency model needs correction.
 Select checks for affected units and relevant dependents, preserving required cross-unit verification. Combine selections for mixed changes. Investigate uncertain dependencies and choose a bounded set covering the affected guarantees.
 Reserve full-suite runs for explicit verification requirements or deliberate scheduled/manual execution. For single-developer projects, prioritize fast feedback and runner capacity within the required verification boundary.
 
 When adding or modifying tests, trace whether existing CI discovery and runner commands automatically execute them, including when workflow files stay unchanged. Evaluate additional recurring runtime and resource use across applicable triggers, overlapping existing evidence, and the affected scope that needs the checks. Preserve continuing guarantees; route test-retention and consolidation decisions to `test-evidence-planning` and `test-evidence-implementation`.
 
-Preserve the required selection while simplifying its dispatch. Use common selection rules and existing test commands to achieve both precise execution and simple configuration.
+Preserve the required selection while simplifying its dispatch. Use common selection rules and existing test commands to achieve both precise execution and simple configuration. Review new selection logic for enumerated special cases and mapping-table maintenance burden.
 
 ## Keep the execution structure direct
 
