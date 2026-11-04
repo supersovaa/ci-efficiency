@@ -32,13 +32,14 @@ Keep per-run workspaces and mutable state isolated or reset, with reproducible d
 
 ## Select required execution
 
-Start with existing test commands and suites as the units of CI execution. Run a broad existing suite when that is simpler to maintain than selecting tests individually; select a smaller existing suite only where the boundary is already clear and the required verification is preserved.
+Minimize recurring test execution while preserving required verification and keeping CI dispatch simple. First use the test runner's or build tool's built-in changed/affected-test selection, filtering, and existing test-group boundaries when available and reliable. Prefer those existing capabilities over creating CI-specific selection logic.
+When built-in affected-test selection is unavailable, select a small set of existing packages, crates, suites, or verification commands using simple common rules. Use broader existing suites when finer selection would cost more to maintain than it saves. Account for integration and shared-contract checks when selecting the necessary scope.
 Prohibit per-file, per-directory, per-component, or per-change-type lookup tables that enumerate corresponding checks, including equivalent lists embedded in scripts or generated from separately maintained mappings. Avoid custom dependency analysis and change-impact dispatch solely to narrow CI execution.
-Choose a small number of understandable jobs from existing execution boundaries. For single-developer projects, balance runtime against configuration complexity and maintenance effort, favoring the simpler structure when finer selection would introduce ongoing machinery.
+Choose a small number of understandable jobs from existing execution boundaries. Evaluate the number of tests and recurring runtime alongside configuration complexity and maintenance effort; favor selection that demonstrably reduces repeated work with little added machinery.
 
 When adding or modifying tests, trace whether existing CI discovery and runner commands automatically execute them, including when workflow files stay unchanged. Evaluate additional recurring runtime and resource use across applicable triggers, overlapping existing evidence, and the affected scope that needs the checks. Preserve continuing guarantees; route test-retention and consolidation decisions to `test-evidence-planning` and `test-evidence-implementation`.
 
-Keep dispatch direct: call the existing verification commands from CI. Review added conditions, helpers, and special cases against the simpler alternative of running an existing suite.
+Keep dispatch direct: invoke built-in test selection or existing verification commands from CI. Review added conditions, helpers, and special cases against built-in selection and simple suite-level execution.
 
 ## Keep the execution structure direct
 
@@ -51,8 +52,8 @@ Keep triggers, job responsibilities, dependencies, environment choice, and verif
 
 ## Verify actual selection and recurring work
 
-Use available run evidence to verify that existing suites cover required checks, including tests automatically collected by unchanged workflows, and trace job/step conditions, preparation, and results.
-Confirm that execution matches the recorded environment premises, required checks execute, compatible environments are reused, and preparation or verification failures remain visible in the overall result.
+Use available run evidence to compare selected test counts and recurring execution cost with broader runs. Check representative affected, unrelated, and mixed changes, including tests automatically collected by unchanged workflows; trace selection, job/step conditions, preparation, and results.
+Confirm that execution matches the recorded environment premises, required checks execute, unrelated tests are omitted when safely selectable, compatible environments are reused, and selection, preparation, or verification failures remain visible in the overall result.
 Distinguish observed execution from predictions and state any remaining validation needs.
 
 When investigating slowness, distinguish queue time, environment preparation, builds, and test execution before choosing a change.
