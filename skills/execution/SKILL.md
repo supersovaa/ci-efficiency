@@ -33,7 +33,7 @@ Keep per-run workspaces and mutable state isolated or reset, with reproducible d
 ## Select required execution
 
 Minimize recurring test execution while preserving required verification and keeping CI dispatch simple. First use the test runner's or build tool's built-in changed/affected-test selection, filtering, and existing test-group boundaries when available and reliable. Prefer those existing capabilities over creating CI-specific selection logic.
-When built-in affected-test selection is unavailable, select a small set of existing packages, crates, suites, or verification commands using simple common rules. Use broader existing suites when finer selection would cost more to maintain than it saves. Account for integration and shared-contract checks when selecting the necessary scope.
+When built-in affected-test selection is unavailable, select a small set of existing packages, crates, suites, or verification commands using simple common rules. Use broader existing suites when finer selection would cost more to maintain than it saves or when the selection's coverage is uncertain. Account for integration and shared-contract checks when selecting the necessary scope.
 Prohibit per-file, per-directory, per-component, or per-change-type lookup tables that enumerate corresponding checks, including equivalent lists embedded in scripts or generated from separately maintained mappings. Avoid custom dependency analysis and change-impact dispatch solely to narrow CI execution.
 Choose a small number of understandable jobs from existing execution boundaries. Evaluate the number of tests and recurring runtime alongside configuration complexity and maintenance effort; favor selection that demonstrably reduces repeated work with little added machinery.
 
