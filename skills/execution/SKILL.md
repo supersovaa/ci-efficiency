@@ -1,11 +1,11 @@
 ---
 name: ci-execution-efficiency
-description: Design, change, or review CI test execution, affected-test selection, workflow configuration, runner-environment reuse, and recurring cost from automatically collected tests across languages and CI services.
+description: Design, change, or review CI execution across services and languages, including affected-test selection, runner reuse, and the recurring cost of automatically collected tests.
 ---
 
 # CI Execution Efficiency
 
-Use this skill when designing, changing, or reviewing CI execution, including tests added to suites that existing workflows automatically collect, affected-test selection, workflow configuration, or runner-environment reuse.
+Account for CI work when designing, changing, or reviewing workflows, runner reuse, and test selection. Adding a test to an automatically collected suite changes CI work even if the workflow file stays the same.
 
 Treat required verification and a simple execution structure as joint requirements. Use settled test evidence and existing verification commands as inputs.
 
