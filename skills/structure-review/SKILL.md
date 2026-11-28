@@ -1,12 +1,11 @@
 ---
 name: test-scope-structure-review
-description: Review costly or unusually broad test runs to see whether separating responsibilities could reduce the required verification scope.
+description: Use when reviewing the scope or cost of test execution. Assess whether responsibility boundaries contribute to the testing burden.
 ---
 
 # Test Scope Structure Review
 
-Identify whether the testing burden arises from necessary integration guarantees or from responsibilities that could be verified independently.
-If a split could reduce the required test scope, suggest evaluating a split and explain which verification it could save. A costly run alone does not justify requiring a split. Preserve necessary integration checks.
+Apply the structural review below to costly or unusually broad execution. Distinguish necessary integration guarantees from responsibilities that could be verified independently. When a split could reduce the necessary scope, suggest evaluating it and explain the expected saving. Preserve necessary integration checks.
 
 Leave crate or package boundaries, dependency design, and implementation to the relevant structure-design workflow, such as `responsibility-driven-crates` for Rust.
 Required test evidence belongs to `requirement-driven-testing`; CI execution configuration belongs to `ci-execution-efficiency`.
