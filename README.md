@@ -26,7 +26,7 @@ Language-specific structure design belongs to its respective owner, such as [`re
 ## Installation
 
 Install `skills/execution` and `skills/structure-review` as separate skill directories in an agent environment that supports `SKILL.md` skills, keeping each `SKILL.md` at its skill directory root.
-Install either skill independently when only its responsibility is needed.
+Install either skill independently when only its responsibility is needed. Load `ci-execution-efficiency` when adding or expanding tests in a repository suite so CI collection can be checked during that work.
 
 ## Files
 
